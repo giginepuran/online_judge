@@ -1,4 +1,4 @@
-#100DaysOfCode \
+# #100DaysOfCode
 ## 3/23 
 ### Two Sum - AC 
 Runtime PR: 40.12 \
