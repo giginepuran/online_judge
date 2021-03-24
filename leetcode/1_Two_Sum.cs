@@ -1,3 +1,4 @@
+// Easy
 public class Solution {
     public int[] TwoSum(int[] nums, int target) {
         int l = nums.Length;
