@@ -24,5 +24,5 @@ Memory PR: 83.43
 ### 5. Longest Palindromic Substring(Medium) - AC
 [link](https://leetcode.com/problems/longest-palindromic-substring/) \
 Runtime PR: 82.50 \
-Memory PR: 43.40 (... wtf?) \
+Memory PR: 43.40 (... wtf?)
 #### Marked
