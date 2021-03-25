@@ -19,3 +19,10 @@ Memory PR: 94.31
 [link](https://leetcode.com/problems/median-of-two-sorted-arrays/) \
 Runtime PR: 96.76 \
 Memory PR: 83.43 
+
+## 3/25
+### 5. Longest Palindromic Substring(Medium) - AC
+[link](https://leetcode.com/problems/longest-palindromic-substring/) \
+Runtime PR: 82.50 \
+Memory PR: 43.40 (... wtf?) \
+#### Marked
