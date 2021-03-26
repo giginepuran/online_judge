@@ -32,3 +32,7 @@ NEED TO REVIEW
 [link](https://leetcode.com/problems/zigzag-conversion/) \
 Runtime PR: 81.76 \
 Memory PR: 54.59
+### 7. Reverse Integer(Easy) - AC
+[link](https://leetcode.com/problems/reverse-integer/) \
+Runtime PR: 96.92 \
+Memory PR: 81.82
