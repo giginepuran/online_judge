@@ -35,4 +35,5 @@ Memory PR: 54.59
 ### 7. Reverse Integer(Easy) - AC
 [link](https://leetcode.com/problems/reverse-integer/) \
 Runtime PR: 96.92 \
-Memory PR: 81.82
+Memory PR: 81.82 \
+Supported by [fordevoted](https://github.com/fordevoted)
