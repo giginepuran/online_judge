@@ -37,3 +37,8 @@ Memory PR: 54.59
 Runtime PR: 96.92 \
 Memory PR: 81.82 \
 Supported by [fordevoted](https://github.com/fordevoted)
+
+### 8. String to Integer(Medium) - AC
+[link](https://leetcode.com/problems/reverse-integer/) \
+Runtime PR: 93.73 \
+Memory PR: 56.27
