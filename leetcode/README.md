@@ -43,3 +43,9 @@ Supported by [fordevoted](https://github.com/fordevoted)
 [link](https://leetcode.com/problems/reverse-integer/) \
 Runtime PR: 93.73 \
 Memory PR: 56.27
+
+## Day5 (3/29)
+### 9. Palindrome Number(Easy) - AC
+[link](https://leetcode.com/problems/palindrome-number/) \
+Runtime PR: 96.62 \
+Memory PR: 95.05
