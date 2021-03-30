@@ -54,4 +54,6 @@ Memory PR: 95.05
 ### 10. Regular Expression Matching(Hard) - AC
 [link](https://leetcode.com/problems/regular-expression-matching/) \
 Runtime PR: 76.53 \
-Memory PR: 96.58
+Memory PR: 96.58 \
+NEED TO REVIEW \
+how to solve it with dynamic programming?
