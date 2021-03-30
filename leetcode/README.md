@@ -49,3 +49,9 @@ Memory PR: 56.27
 [link](https://leetcode.com/problems/palindrome-number/) \
 Runtime PR: 96.62 \
 Memory PR: 95.05
+
+## Day6 (3/30)
+### 10. Regular Expression Matching(Hard) - AC
+[link](https://leetcode.com/problems/regular-expression-matching/) \
+Runtime PR: 76.53 \
+Memory PR: 96.58
