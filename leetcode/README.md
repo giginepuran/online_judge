@@ -70,3 +70,9 @@ pointer reference..
 [link](https://leetcode.com/problems/integer-to-roman/) \
 Runtime PR: 94.19 \
 Memory PR: 91.03 
+
+## Day8 (4/01)
+### 13. Roman to Integer(Easy) - AC
+[link](https://leetcode.com/problems/roman-to-integer/) \
+Runtime PR: 85.34 \
+Memory PR: 64.84
