@@ -76,3 +76,8 @@ Memory PR: 91.03
 [link](https://leetcode.com/problems/roman-to-integer/) \
 Runtime PR: 85.34 \
 Memory PR: 64.84
+
+### 14. Longest Common Prefix(Easy) - AC
+[link](https://leetcode.com/problems/longest-common-prefix/) \
+Runtime PR: 90.03 \
+Memory PR: 85.13
