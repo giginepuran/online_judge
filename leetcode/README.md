@@ -81,3 +81,13 @@ Memory PR: 64.84
 [link](https://leetcode.com/problems/longest-common-prefix/) \
 Runtime PR: 90.03 \
 Memory PR: 85.13
+
+## Day9 (4/02)
+### 15. 3Sum(Medium) - **TLE**
+[link](https://leetcode.com/problems/3sum/) \
+Runtime PR: - \
+Memory PR: - \
+ZZZZZZZZZZ
+
+## Day10 (4/03)
+### 15. 3Sum(Medium) - 
