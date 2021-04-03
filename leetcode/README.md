@@ -90,4 +90,9 @@ Memory PR: - \
 ZZZZZZZZZZ
 
 ## Day10 (4/03)
-### 15. 3Sum(Medium) - 
+### 15. 3Sum(Medium) - AC
+[link](https://leetcode.com/problems/3sum/) \
+Runtime PR: 30.93 \
+Memory PR: 74.74 \
+NEED TO REVIEW \
+DIY sort
