@@ -96,3 +96,11 @@ Runtime PR: 30.93 \
 Memory PR: 74.74 \
 NEED TO REVIEW \
 DIY sort
+
+### 16. 3Sum Closest(Medium) - AC
+[link](https://leetcode.com/problems/3sum-closest/) \
+Runtime PR: 94.52 (LGTM...?) \
+Memory PR: 98.03 \
+Compare to 15. 3Sum, \
+Only DIY BinarySearch is modified, \
+but the runtime in 3Sum is suck... wtf????????
