@@ -111,7 +111,15 @@ but the runtime in 3Sum is suck... wtf????????
 Runtime PR: 97.80 \
 Memory PR: 63.34 \
 Learned syntax of tree & recusion & reference \
-It seems useful in lots circumstances! \0
-YA~~~!!!
+It seems useful in lots circumstances! \
+YA!!!
 
-
+### 18. 4Sum(Medium) - AC
+[link](https://leetcode.com/problems/4sum/) \
+Runtime PR: 98.96 \
+Memory PR: 58.13 \
+YAAAAAAAAAAA revenge of 3Sum \
+recursion(ref List, layer) is used \
+Two critical points: \
+lim sum > target -> break \
+lim sum < target -> continue
