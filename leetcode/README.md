@@ -121,7 +121,6 @@ YA!!!
 [link](https://leetcode.com/problems/4sum/) \
 Runtime PR: 98.96 \
 Memory PR: 58.13 \
-YAAAAAAAAAAA revenge of 3Sum \
 recursion(ref List, layer) is used \
 Two critical points: \
 lim sum > target -> break \
