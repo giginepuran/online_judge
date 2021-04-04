@@ -104,3 +104,14 @@ Memory PR: 98.03 \
 Compare to 15. 3Sum, \
 Only DIY BinarySearch is modified, \
 but the runtime in 3Sum is suck... wtf????????
+
+## Day11 (4/04)
+### 17. Letter Combinations of a Phone Number(Medium) - AC
+[link](https://leetcode.com/problems/letter-combinations-of-a-phone-number/) \
+Runtime PR: 97.80 \
+Memory PR: 63.34 \
+Learned syntax of tree & recusion & reference \
+It seems useful in lots circumstances! \0
+YA~~~!!!
+
+
