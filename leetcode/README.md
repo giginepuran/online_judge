@@ -95,7 +95,10 @@ ZZZZZZZZZZ
 Runtime PR: 30.93 \
 Memory PR: 74.74 \
 NEED TO REVIEW \
-DIY sort
+DIY sort? \
+4/04 22:45 update: \
+Method recursion(ref List, layer) is used, \
+but runtime only get shorter to PR~32.40.......WTF??????????????????
 
 ### 16. 3Sum Closest(Medium) - AC
 [link](https://leetcode.com/problems/3sum-closest/) \
@@ -123,3 +126,4 @@ recursion(ref List, layer) is used \
 Two critical points: \
 lim sum > target -> break \
 lim sum < target -> continue
+
