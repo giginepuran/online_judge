@@ -127,7 +127,7 @@ lim sum > target -> break \
 lim sum < target -> continue
 
 ## Day12 (4/05)
-### 19. Remove Nth Node From End of List
+### 19. Remove Nth Node From End of List - AC
 [link](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) \
 Runtime PR: 63.99 \
 Memory PR: 94.08 \
