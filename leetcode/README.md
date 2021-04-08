@@ -127,10 +127,17 @@ lim sum > target -> break \
 lim sum < target -> continue
 
 ## Day12 (4/05)
-### 19. Remove Nth Node From End of List - AC
+### 19. Remove Nth Node From End of List(Medium) - AC
 [link](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) \
 Runtime PR: 63.99 \
 Memory PR: 94.08 \
 Time complexity : 2N (N : len of nodes) \
 Try to save refs of nodes to list but it failed. \
 I don't know how to change 1 node in List to modify the series of Nodes.
+
+## Day14 (4/08)
+### 20. Valid Parentheses(Easy) - AC
+[link](https://leetcode.com/problems/valid-parentheses/) \
+Runtime PR: 94.38 \
+Memory PR: 81.95 \
+List is fast!
