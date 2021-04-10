@@ -4,7 +4,14 @@
 ### 1. Two Sum(Easy) - AC 
 [link](https://leetcode.com/problems/two-sum/) \
 Runtime PR: 40.12 \
-Memory PR: 96.29 
+Memory PR: 96.29  \
+4/10 update \
+Runtime: \
+220ms \
+PR 99.81 \
+Memory: \
+32MB \
+PR 15.69
 ### 2. Add Two Numbers(Medium) - AC 
 [link](https://leetcode.com/problems/add-two-numbers/) \
 Runtime PR: 97.69 \
@@ -141,3 +148,7 @@ I don't know how to change 1 node in List to modify the series of Nodes.
 Runtime PR: 94.38 \
 Memory PR: 81.95 \
 List is fast!
+
+## Day15 (4/10)
+REVIEW -> <- array search \
+in TWO SUM, THREE SUM
