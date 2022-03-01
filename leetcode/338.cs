@@ -39,7 +39,7 @@ Time complexity = O(n)
 Time complexity = O(logn) ?吧 看起來是= =
 有考量到可能是array與Ienum間轉換的時間所導致，
 而一開始就把[0, 1]宣告成IEnum還是快不起來
-
+測試到n=10000都是迴圈較快@@，感覺要土炮用LinkedNode做嗎...
 ...
 */
 
