@@ -1,9 +1,19 @@
 /* Easy
 03/01/22
+LinkedNode + Sliding window 作法
+Runtime 93.60%
+Memory  5.25%
+
+IEnum + Sliding 作法
+Runtime 67.82% 
+Memory   5.25% 
+
+迴圈作法
 Runtime 85.88%
 Memory  29.39%
 */
 
+// 迴圈作法
 public class Solution {
     public int[] CountBits(int n) 
     {
@@ -20,33 +30,7 @@ public class Solution {
     }
 }
 
-/*
-做法是類似費波納氣數列的做法，從小做到大，大的會回去取小的結果
-0 1 
-0 1 ( 2%2 + ans(2/2) ) ( 3%2 + ans(3/2) ) ...
-
-Time complexity = O(n)
-------------------------------------------------
-本來想要用類似slide window的作法，但不知道為何速度沒辦法超越單純迴圈= =
-0 1
-
-0 1 (0+1) (1+1)
-0 1 1 2
-
-0 1 1 2 (0+1) (1+1) (1+1) (2+1)
-0 1 1 2 1 2 2 3
-
-Time complexity = O(logn) ?吧 看起來是= =
-有考量到可能是array與Ienum間轉換的時間所導致，
-而一開始就把[0, 1]宣告成IEnum還是快不起來
-測試到n=10000都是迴圈較快@@，感覺要土炮用LinkedNode做嗎...
-...
-*/
-
-/* Sliding window的作法
-Runtime 67.82% 
-Memory   5.25% 
-*/
+// List + Sliding window的作法
 public class Solution {
     public int[] CountBits(int n) 
     {
@@ -64,3 +48,70 @@ public class Solution {
         return series.ToArray();
     }
 }
+
+// LinkedNode + Sliding window 作法
+public class Solution {
+    public int[] CountBits(int n) 
+    {
+        int[] ans = new int[n+1];
+        LinkedNode head = new LinkedNode(0, null);
+        int len = 1;
+        while (len <= n)
+        {
+            LinkedNode scanning = head;
+            LinkedNode head2 = new LinkedNode(scanning.val+1, null);
+            LinkedNode tail2 = head2;
+
+            while (scanning.next != null)
+            {
+                scanning = scanning.next;
+                tail2.next = new LinkedNode(scanning.val+1, null);
+                tail2 = tail2.next;
+            }
+            // scanning become tail here
+            scanning.next = head2;
+            len *= 2;
+        }
+        for (int i = 0; i <= n; i++)
+        {
+            ans[i] = head.val;
+            head = head.next;
+        }
+        return ans;
+    }
+    class LinkedNode
+    {
+        internal int val;
+        internal LinkedNode next;
+        public LinkedNode(int val, LinkedNode next)
+        {
+            this.val = val;
+            this.next = next;
+        }
+    }
+}
+        
+
+
+/*
+迴圈做法是類似費氏數列的做法，從小做到大，大的會回去取小的結果
+0 1 
+0 1 ( 2%2 + ans(2/2) ) ( 3%2 + ans(3/2) ) ...
+
+Time complexity = O(n)
+------------------------------------------------
+slide window的作法，但不知道為何速度沒快很多= =
+0 1
+
+0 1 (0+1) (1+1)
+0 1 1 2
+
+0 1 1 2 (0+1) (1+1) (1+1) (2+1)
+0 1 1 2 1 2 2 3
+
+Time complexity = O(logn) ?吧 看起來是= =
+
+Runtime 93.60%
+Memory  5.25%
+*/
+
