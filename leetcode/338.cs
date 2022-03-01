@@ -4,9 +4,9 @@ LinkedNode + Sliding window 作法
 Runtime 93.60%
 Memory  5.25%
 
-IEnum + Sliding 作法
-Runtime 67.82% 
-Memory   5.25% 
+迴圈 + Sliding 作法
+Runtime 65.52%
+Memory  25.62% 
 
 迴圈作法
 Runtime 85.88%
@@ -30,22 +30,21 @@ public class Solution {
     }
 }
 
-// List + Sliding window的作法
+// 迴圈 + Sliding window的作法
 public class Solution {
     public int[] CountBits(int n) 
     {
-        var series = Enumerable.Range(0, 2);
+        int[] ans = new int[n+1];
 
-        int length = 2;
-        while (length <= n)
+        int length = 1;
+        // ans[0] = 0 
+
+        for (int i = 1; i <= n; i++)
         {
-            series = series.Concat(
-                     from num in series
-                     select num+1);
-            length *= 2;
+            if (i == length*2) length *= 2;
+            ans[i] = ans[i-length] + 1;
         }
-        series = series.Take(n+1);
-        return series.ToArray();
+        return ans;
     }
 }
 
