@@ -1,7 +1,6 @@
-/* Medium
+/* Medium 15 min
 Runtime 78.14% %
 Memory  22.29% %
-Leetcode更快的算法有省略二的過程的做法
 */
 
 public class Solution {
