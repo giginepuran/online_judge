@@ -1,6 +1,7 @@
 /* Medium 15 min
 Runtime 78.14% %
 Memory  22.29% %
+做法跟最速解一樣，都是用銜尾蛇+找node切斷+return newHead
 */
 
 public class Solution {
