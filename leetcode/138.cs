@@ -5,6 +5,11 @@
 AC_1 8:10 (28 min)
 Runtime 76.82%
 Memory  43.26%
+
+最快的方法是用
+hashtable + reverse hashtable
+直接查找random pointer對應的位置
+感覺這技巧很多地方用的到
 */
 
 public class Solution {
@@ -29,6 +34,7 @@ public class Solution {
         {
             Node surve = head;
             Node surve2 = newHead;
+            // sync search nodes through two nodes
             while (surve != operating.random)
             {
                 surve = surve.next;
