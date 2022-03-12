@@ -8,8 +8,13 @@ Memory  43.26%
 
 最快的方法是用
 hashtable + reverse hashtable
-直接查找random pointer對應的位置
-感覺這技巧很多地方用的到
+直接紀錄
+原始 random pointer對應的位置
+以及
+clone 對應位置的 pointer，
+就可以在Log(n)的時間完成！！！
+
+有點厲害，感覺這技巧很多地方用的到
 */
 
 public class Solution {
