@@ -2,9 +2,6 @@
 Day12 (4/5)
 Runtime PR: 63.99
 Memory PR: 94.08
-2N (N : len of nodes)
-Try to save refs of nodes to list but it failed.
-I don't know how to change 1 node in List to modify the series of Nodes.
 */
 public class Solution {
     public ListNode RemoveNthFromEnd(ListNode head, int n) {
