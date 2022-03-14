@@ -1,4 +1,3 @@
-// Hard?
 public class Solution {
     public double FindMedianSortedArrays(int[] nums1, int[] nums2) {
         int l1 = nums1.Length, l2 = nums2.Length;
