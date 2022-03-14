@@ -2,13 +2,6 @@
 Day11 (4/4)
 Runtime PR: 98.96
 Memory PR: 58.13
-YAAAAAAAAAAAAAAAAAA
-REVENGE OF 15. 3Sum
-Compare with 3Sum:
-1. using recursion(layer, ref List)
-2. two critical conditions:
-a. lim sum > target break
-b. lim sum < target continue
 */
 public class Solution {
     public IList<IList<int>> FourSum(int[] nums, int target) {
