@@ -2,7 +2,6 @@
 Day14 (4/8)
 Runtime PR: 94.38
 Memory PR: 81.95
-List is fast!
 */
 public class Solution {
     public bool IsValid(string s) {
