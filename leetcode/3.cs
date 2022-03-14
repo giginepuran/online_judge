@@ -1,4 +1,3 @@
-// Medium https://leetcode.com/problems/longest-substring-without-repeating-characters/
 public class Solution {
     public int LengthOfLongestSubstring(string s) {
         int max_l = 0, L = s.Length;
