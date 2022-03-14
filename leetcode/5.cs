@@ -1,4 +1,3 @@
-// Medium
 public class Solution {
     public string LongestPalindrome(string s) {
         short L = (short)s.Length;
@@ -31,7 +30,7 @@ public class Solution {
                     start = (short)(i-j+1);
                     end = (short)(i-j+ll);
                 }
-            }// End of if isConnect
+            }
             else{
                 j = 1;
                 ll = 1;
@@ -46,7 +45,7 @@ public class Solution {
                     start = (short)(i-j+1);
                     end = (short)(i-j+ll);
                 }
-            }// End of else
+            }
         }
         string ss = "";
         for(short i = start; i <= end; i++) ss+=s[i];
