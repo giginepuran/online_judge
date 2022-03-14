@@ -1,6 +1,6 @@
 # Overview
 
-# Statis
+# Statistic
 | Difficulty | Solved | Percentage(%) |
 |          - |      - |             - |
 |       Easy |     10 |          28.7 |
