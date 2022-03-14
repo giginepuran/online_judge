@@ -1,6 +1,6 @@
 # Overview
 
-# Statistic
+## Statistic
 | Difficulty | Solved | Percentage(%) |
 |          - |      - |             - |
 |       Easy |     10 |          28.7 |
@@ -8,13 +8,13 @@
 |       Hard |      4 |          40.4 |
 |      Total |     36 |           100 |
 
-# Review List
+## Review List
 |    No. | Difficulty | Reason |
 |      - |          - |      - |
 |     28 |       Easy | 應該非最佳解 |
 |     30 |       Hard | TLE |
 
-# Performance
+## Performance
 |    No. | Runtime(%) | Memory | Difficulty |
 |      - |          - |      - |          - |
 |      1 |      99.81 |  15.69 |       Easy |
