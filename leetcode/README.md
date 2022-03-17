@@ -1,12 +1,12 @@
 # Overview
 
 ## Statistic
-| Difficulty | Solved | Percentage(%) |
-|          - |      - |             - |
-|       Easy |     10 |          28.7 |
-|     Medium |     22 |          59.2 |
-|       Hard |      4 |          40.4 |
-|      Total |     36 |           100 |
+| Difficulty | Solved |
+|        --- |    --- |
+|       Easy |     10 |
+|     Medium |     23 |
+|       Hard |      4 |
+|      Total |     37 |
 
 ## Review List
 |    No. | Difficulty | Reason |
@@ -53,3 +53,4 @@
 |    204 |      88.56 |  76.84 |     Medium |
 |    338 |      97.51 |  --.-- |       Easy |
 |    740 |      87.56 |  33.68 |     Medium |
+|    856 |      98.18 |  10.91 |     Medium |
