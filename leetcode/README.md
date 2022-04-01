@@ -4,9 +4,9 @@
 | Difficulty | Solved |
 |        --- |    --- |
 |       Easy |     11 |
-|     Medium |     23 |
+|     Medium |     24 |
 |       Hard |      4 |
-|      Total |     38 |
+|      Total |     39 |
 
 ## Review List
 |    No. | Difficulty | Reason |
@@ -46,6 +46,7 @@
 |     27 |      99.86 |  67.33 |       Easy |
 |     28 |      87.01 |  34.19 |       Easy |
 |     29 |      82.64 |  11.74 |     Medium |
+|     31 |      96.39 |  15.85 |     Medium |
 |     61 |      72.78 |  22.55 |     Medium |
 |     71 |      88.97 |  --.-- |     Medium |
 |     82 |      94.32 |   8.22 |     Medium |
