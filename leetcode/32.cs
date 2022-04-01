@@ -1,8 +1,8 @@
 /* Hard
 17:30 start
 18:14 AC1
-Runtime: 99.53%
-Memory:   5.67%
+Runtime: 73.05%
+Memory:  26.48%
 
 最佳解是用抓bra數量=key數量，從兩個方向抓，的方式來求最長，
 沒有用任何Dictionary/Stack有點厲害的想法@@
