@@ -12,7 +12,6 @@ public class Solution {
     public int LongestValidParentheses(string s) {
         Dictionary<int,int> pair = new Dictionary<int, int>();
         Stack<int> bra = new Stack<int>();
-        Stack<int> abandKet = new Stack<int>();
         for (int i = 0; i < s.Length; ++i)
         {
             if (s[i] == '(')
@@ -21,12 +20,8 @@ public class Solution {
             {
                 if (bra.Count != 0)
                     pair.Add(bra.Pop(), i);
-                else
-                    abandKet.Push(i);
             }
         }
-        if (pair.Count == 0)
-            return 0;
         int ans = 0;
         foreach (var kv in pair)
         {
