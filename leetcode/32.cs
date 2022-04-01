@@ -6,10 +6,6 @@ Memory:   5.67%
 
 最佳解是用抓bra數量=key數量，的方式來求最長，
 沒有用任何Dictionary/Stack有點厲害的想法@@
-
-利用Dictionary + Stack 以 O(n)整理過整個braket
-本來最後算長度的部分好像無法再最佳化了
-因為KeyValuePair是無序的，只能用foreach@@
 */
 
 public class Solution {
