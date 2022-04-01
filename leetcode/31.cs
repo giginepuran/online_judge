@@ -4,6 +4,9 @@
 Runtime: 76.61%
 Memory:  34.43%
 
+11:54 AC2
+Runtime: 96.39%
+Memory:  15.85%
 ***
 最佳解是由後面往前確認遞增，而不是從頭開始判斷遞減!
 
@@ -11,32 +14,24 @@ Memory:  34.43%
 
 public class Solution {
     public void NextPermutation(int[] nums) {
-        if (EndOfPermuatation(nums, 0))
+        if (nums.Length == 1) return;
+        int n = nums.Length-2;
+        while (n >= 0 && nums[n] >= nums[n+1])
+            --n;
+        if (n != -1)
         {
-            Reverse(nums, 0);
+            int m = nums.Length-1;
+            while (nums[m] <= nums[n])
+                --m;
+            Swap(nums, n, m);
         }
+        Reverse(nums, n+1);
     }
-    bool EndOfPermuatation(int[] nums, int start)
+    void Swap(int[] nums, int i, int j)
     {
-        if (start == nums.Length-1)
-            return true;
-        if (nums[start] >= nums[start+1])
-            return EndOfPermuatation(nums, start+1);
-        if (EndOfPermuatation(nums, start+1))
-        {
-            int buffer = nums[start];
-            for (int i = nums.Length-1; i > start; --i)
-            {
-                if (nums[i] > buffer)
-                {
-                    nums[start] = nums[i];
-                    nums[i] = buffer;
-                    Reverse(nums, start+1);
-                    break;
-                }
-            }
-        }
-        return false;
+        int buffer = nums[i];
+        nums[i] = nums[j];
+        nums[j] = buffer;
     }
     void Reverse(int[] nums, int start)
     {
