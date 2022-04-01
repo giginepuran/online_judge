@@ -4,8 +4,9 @@
 Runtime: 99.53%
 Memory:   5.67%
 
-最佳解是用抓bra數量=key數量，的方式來求最長，
+最佳解是用抓bra數量=key數量，從兩個方向抓，的方式來求最長，
 沒有用任何Dictionary/Stack有點厲害的想法@@
+而且速度很穩定，很快
 */
 
 public class Solution {
