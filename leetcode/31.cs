@@ -3,6 +3,10 @@
 11:36 AC1
 Runtime: 76.61%
 Memory:  34.43%
+
+***
+最佳解是由後面往前確認遞增，而不是從頭開始判斷遞減!
+
 */
 
 public class Solution {
