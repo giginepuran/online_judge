@@ -91,19 +91,30 @@ typedef struct Node {
     int set_index;
     char *word;
     size_t word_len;
+    struct Node *previous;
     struct Node *next;
     int isMatchNode;
 } Node;
+
+typedef struct List {
+    Node *head;
+    Node *tail;
+} List;
+
+enum DIRECTION {
+    HEAD,
+    TAIL,
+    BEFORE,
+    AFTER,
+};
 
 Dictionary *compare_result = NULL;
 int ans[10000];
 int done[10000];
 int ansSize = 0;
 int sLen = 0;
-Node *holdNodes;
-Node *setNodes;
-Node *endOfHoldNodes;
-Node *endOfSetNodes;
+List *holdList;
+List *setList;
 
 void printNodes(Node *head) {
     Node *p;
@@ -114,6 +125,7 @@ void printNodes(Node *head) {
 
 Node *createNode(char *word) {
     Node *p = (Node*)malloc(sizeof(Node));
+    p->previous = NULL;
     p->next = NULL;
     p->isMatchNode = 0;
     p->word = word;
@@ -132,42 +144,88 @@ void freeNodes(Node *node) {
     return;
 }
 
-void enNode(Node **head, Node *node) {
-    Node *p;
-    if (!head) 
-        return;
-    if (!*head) {
-        *head = node;
+void enNode(List *list, Node *node, int direction) {
+    if (node->next || node->previous) {
+        printf("enNode can only used by node without next & previous\n.");
         return;
     }
-    p = *head;
-    while (p->next)
-        p = p->next;
-    p->next = node;
+
+    // empty list
+    if (!list->head) {
+        node->next = node->previous = NULL;
+        list->head = list->tail = node;
+        return;
+    }
+    
+    if (direction == HEAD) {
+        list->head->previous = node;
+        node->next = list->head;
+        list->head = node;
+    } else if (direction == TAIL) {
+        list->tail->next = node;
+        node->previous = list->tail;
+        list->tail = node;
+    }
     return;
 }
 
-void deNode(Node **head, Node *node) {
+void insertNode(List *list, Node *new_node, int direction, Node *ref_node) {
     Node *p;
-    if (!head || !*head)
-        return NULL;
-    if (*head == node) {
-        *head = NULL;
-        p = node->next;
-        node->next = NULL;
-        return p;
-    }
-    p = *head;
-    while (p->next) {
-        if (p->next == node) {
-            p->next = NULL;
-            p = node->next;
-            node->next = NULL;
-            return p;
+    if (!ref_node) // if ref_node is NULL, do nothing
+        return;
+
+    if (direction == BEFORE) {
+        p = ref_node->previous;
+        if (p) {
+            p->next = new_node;
+            new_node->previous = p;
+        } else { // ref_node is head of list
+            list->head = new_node;
+            new_node->previous = NULL;
         }
-        p = p->next;
+        new_node->next = ref_node;
+        ref_node->previous = new_node;
+    } else if (direction == AFTER) {
+        p = ref_node->next;
+        if (p) {
+            p->previous = new_node;
+            new_node->next = p;
+        } else { // ref_node is tail of list
+            list->tail = new_node;
+            new_node->next = NULL;
+        }
+        new_node->previous = ref_node;
+        ref_node->next = new_node;
     }
-    return NULL;
+    return;
+}
+
+void deNode(List *list, Node *node) {
+    // For performance, this function will not check node is in list or not.
+    Node *p;
+    if(list->head == list->tail) {
+        list->head = list->tail = NULL;
+        node->next = node->previous = NULL;
+        return;
+    }
+
+    if (list->head == node) {
+        p = node->next;
+        list->head = p;
+        p->previous = NULL;
+    } else if (list->tail == node) {
+        p = node->previous;
+        list->tail = p;
+        p->next = NULL;
+    } else {
+        p = node->next;
+        p->previous = NULL;
+        p = node->previous;
+        p->next = NULL;
+    }
+    // clear connection of node at last
+    node->next = node->previous = NULL;
+    return;
 }
 
 int isMatchNode(char *s, int i, Node *node) {
@@ -175,16 +233,21 @@ int isMatchNode(char *s, int i, Node *node) {
     int *values;
     int j;
 
-    if (i + node->word_len > sLen) {
-        result = COMPARE_RESULT_FAIL;
-    } else if (strncmp(&s[i], node->word, node->word_len)) {
-        result = COMPARE_RESULT_FAIL;
-    } else {
-        result = COMPARE_RESULT_SUCCESS;
-    }
+    if (i >= TABLE_SIZE)
+        return COMPARE_RESULT_FAIL;
 
+    // Try to found compare history of word
     values = lookup(compare_result, node->word);
-    if (!values) {
+
+    // If word as key is inserted into Dict
+    if (values) {
+        switch (values[i]) {
+        case COMPARE_RESULT_SUCCESS:
+            return COMPARE_RESULT_SUCCESS;
+        case COMPARE_RESULT_FAIL:
+            return COMPARE_RESULT_FAIL;            
+        }
+    } else {
         values = (int*)malloc(sizeof(int) * 10000);
         for (j = 0; j < 10000; j++) {
             values[j] = COMPARE_RESULT_NOTYET;
@@ -193,12 +256,18 @@ int isMatchNode(char *s, int i, Node *node) {
         free(values);
         values = lookup(compare_result, node->word);
     }
-    values[i] = result;
+
+    if (strncmp(&s[i], node->word, node->word_len)) {
+        values[i] = result = COMPARE_RESULT_FAIL;
+    } else {
+        values[i] = result = COMPARE_RESULT_SUCCESS;
+    }
     return result;
 }
 
 int dfs(char *s, int i) {
-    Node *p = NULL;
+    Node *p = NULL, *p2 = NULL;
+    int isMatchNode_buf;
 #ifdef DEBUG
     printf("---------------------------\n");
     printf("dfs start with\n&s[%d]: %s\n", i, &s[i]);
@@ -207,57 +276,53 @@ int dfs(char *s, int i) {
     printf("setNodes:\n");
     printNodes(setNodes);
 #endif
-    if (!holdNodes) {
+    if (!holdList->head) {
         int suc_index;
 
-        suc_index=setNodes->set_index;
+        suc_index = holdList->head->set_index;
         ans[ansSize++] = suc_index;
         done[suc_index] = COMPARE_RESULT_SUCCESS;
 #ifdef DEBUG
-        printf("Answer found!\ni = %d, setNodes->word = %s, suc_index=%d\n", i, setNodes->word, suc_index);
+        printf("Answer found!\ni = %d, holdList->head->word = %s, suc_index=%d\n", i, holdList->head->word, suc_index);
 #endif
         // Window slide
-        while (isMatchNode(s, i, setNodes) == COMPARE_RESULT_SUCCESS) {
-            p = setNodes;        
+        while (isMatchNode(s, i, holdList->head) == COMPARE_RESULT_SUCCESS) {
+            p = holdList->head;
+            deNode(holdList, p);
             p->set_index = i;
-            setNodes=deNode(&setNodes, p);
-            enNode(&setNodes, p);
-            suc_index=setNodes->set_index;
+            enNode(holdList, p, TAIL);
+            suc_index = holdList->head->set_index;
             ans[ansSize++] = suc_index;
             done[suc_index] = COMPARE_RESULT_SUCCESS;
             i += p->word_len;
         }
-        holdNodes = setNodes;
-        setNodes = NULL;
+        holdList->head = setList->head;
+        holdList->tail = setList->tail;
+        setList->head = setList->tail = NULL;
         return 1;
     }
 
-    Node *remainNodes = NULL;
     int *dupaMatch = (int*)malloc(TABLE_SIZE * sizeof(int));
-    for (p = holdNodes; p; p = p->next) {
+    for (p = holdList->head; p; p = p2) {
+        p2 = p->next;
         if (!dupaMatch[hash(p->word)] && isMatchNode(s, i, p) == COMPARE_RESULT_SUCCESS) {
+            // label word compared in this layer
             dupaMatch[hash(p->word)] = 1;
+            // Try dfs in next layer
+            deNode(holdList, p);
+            enNode(setList, p, TAIL);
             p->set_index = i;
+            isMatchNode_buf = p->isMatchNode;
             p->isMatchNode = 1;
-        } else {
-            p->isMatchNode = 0;
-        }
-    }
-
-    for (p = holdNodes; p; p = p->next) {
-        if (p->isMatchNode) {
-            remainNodes = deNode(&holdNodes, p);
-            enNode(&setNodes, p);
-            enNode(&holdNodes, remainNodes);
-            
             if (dfs(s, i + p->word_len))
                 return 1;
-            
-            deNode(&setNodes, p);
-            enNode(&holdNodes, p);
+            // dfs failed, restore the previous state
+            deNode(setList, p);
+            insertNode(holdList, p, BEFORE, p2);
+            p->set_index = -1;
+            p->isMatchNode = isMatchNode_buf;
         }
     }
-
     // Only 1 node remain in 
 
     return 0;
@@ -276,25 +341,24 @@ Node *setNodes;
 
 int* findSubstring(char* s, char** words, int wordsSize, int* returnSize) {
     int i;
-    
-    compare_result = create_dictionary();
     ansSize = 0;
     sLen = strlen(s);
-    holdNodes = NULL;
-    setNodes = NULL;
+    compare_result = create_dictionary();
+    holdList = (List*)malloc(sizeof(List));
+    setList = (List*)malloc(sizeof(List));
 
     for (i = 0; i < 10000; i++)
         done[i] = COMPARE_RESULT_NOTYET;
     
     for (i = 0; i < wordsSize; i++)
-        enNode(&holdNodes, createNode(words[i]));
+        enNode(holdList, createNode(words[i]), TAIL);
 
     for (i = 0; i < sLen; i++) {
         if(done[i] == COMPARE_RESULT_NOTYET)
             dfs(s, i);
     }
-    freeNodes(setNodes);
-    freeNodes(holdNodes);
+    freeNodes(holdList->head);
+    freeNodes(setList->head);
     free_dictionary(compare_result);
     *returnSize = ansSize;
     return ans;
