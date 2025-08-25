@@ -19,9 +19,9 @@ clean:
 	rm -rf $(DEBUG_MAIN) $(MAIN)
 
 test:
-	./$(DEBUG_MAIN) $(INPUT)
+	./$(MAIN) $(INPUT)
 
 debug_test:
-	./$(MAIN) $(INPUT)
+	./$(DEBUG_MAIN) $(INPUT)
 
 
